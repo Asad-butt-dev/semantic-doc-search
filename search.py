@@ -1,0 +1,40 @@
+import numpy as np
+import json as js
+from sentence_transformers import SentenceTransformer as ST
+from read import DATA_DIR
+
+
+
+
+def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,bonus:float)->list[dict]:
+    chunks=list()
+    vectors=np.load(DATA_DIR/f"vectors_{chunk_size}.npy")
+    with open(DATA_DIR/f"chunks_{chunk_size}.json","r",encoding="utf-8") as f:
+       chunks=js.load(f)
+    modell = ST("paraphrase-multilingual-MiniLM-L12-v2")
+    query_vector=modell.encode(query)
+    scores=(query_vector*vectors)
+    scores=scores.sum(axis=1)/(((query_vector**2).sum(axis=0)**0.5)*((vectors**2).sum(axis=1)**0.5))
+    if use_hybrid:
+      dic=build_term_index(key_terms,str(chunk_size))
+      bonus_list=np.zeros((len(chunks),))
+      for values in dic.values():
+          bonus_list[values]+=bonus
+    add_bonus_vector=scores+bonus_list
+    
+    result=add_bonus_vector.argsort(axis=0)    
+    
+    return [{**chunks[i],"score":float(scores[i]),"bonus":bonus_list[i]} for i in result[-5:][::-1]]
+
+
+def build_term_index(key_terms:list[str],chunk_size:str)-> dict[str, list[int]]:
+    list_of_chunks=list()
+    dic={}
+    with open(DATA_DIR/f"chunks_{chunk_size}.json","r",encoding="utf-8") as f:
+        list_of_chunks=js.load(f)
+    for element in key_terms:
+        dic[element]=list()
+        for i in range(len(list_of_chunks)):
+            if element in list_of_chunks[i]["text"]:
+                dic[element].append(i)
+    return dic
