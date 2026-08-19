@@ -9,6 +9,14 @@ Not documentation — this is for decisions, dead ends, and open questions.
 
 Format: what was decided, why, and what the evidence was.
 
+### 2026-08-18 — Naming cleanup and version control
+Renamed variables and functions across backend and frontend to follow PEP 8
+(snake_case) and TypeScript conventions (camelCase, PascalCase for types).
+Field names unified to English across chunk dicts, API params, and the
+TypeScript interface. Added return type annotations and a `Chunk` TypedDict.
+Data paths moved to a `DATA_DIR` constant built from `Path(__file__).parent`.
+Set up git and pushed to GitHub.
+
 ### 2026-08-17 — React frontend working end to end
 Rebuilt the plain-JS search form in React + TypeScript. Four controlled inputs
 (one checkbox using `checked` instead of `value`), results held in a typed
@@ -71,6 +79,13 @@ Rough tracking — useful for estimating the next project.
 ## Time sinks (and the fix)
 
 Things that cost more than 30 minutes. These come back.
+
+- **Renaming the project folder broke the venv.** Absolute paths are baked in,
+  so `pip freeze` came back empty and pip resolved to an empty environment.
+  Fix: delete `venv/`, recreate, reinstall. Lesson: generate
+  `requirements.txt` *before* moving or renaming anything.
+- **First `git add .` picked up `venv/`.** `.gitignore` wasn't taking effect.
+  `git rm -r --cached .` undoes staging without touching files.
 
 - **Node version too old for Vite.** Error said "cannot find native binding /
   npm bug, delete node_modules" — misleading. Real cause was in the
