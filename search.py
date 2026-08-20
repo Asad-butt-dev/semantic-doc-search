@@ -15,16 +15,19 @@ def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,b
     query_vector=modell.encode(query)
     scores=(query_vector*vectors)
     scores=scores.sum(axis=1)/(((query_vector**2).sum(axis=0)**0.5)*((vectors**2).sum(axis=1)**0.5))
+    add_bonus_vector=scores
     if use_hybrid:
       dic=build_term_index(key_terms,str(chunk_size))
       bonus_list=np.zeros((len(chunks),))
       for values in dic.values():
           bonus_list[values]+=bonus
-    add_bonus_vector=scores+bonus_list
+      add_bonus_vector+=bonus_list
     
     result=add_bonus_vector.argsort(axis=0)    
-    
-    return [{**chunks[i],"score":float(scores[i]),"bonus":bonus_list[i]} for i in result[-5:][::-1]]
+    if use_hybrid:
+      return [{**chunks[i],"score":float(scores[i]),"bonus":bonus_list[i]} for i in result[-5:][::-1]]
+    else:
+      return [{**chunks[i],"score":float(scores[i])} for i in result[-5:][::-1]]
 
 
 def build_term_index(key_terms:list[str],chunk_size:str)-> dict[str, list[int]]:
