@@ -6,9 +6,12 @@ from search import search_chunks
 
 
 def eval():
-  for chunk_size in range(200,250,50):
-    with open("eval.json","r",encoding="utf-8") as f:
-        query=js.load(f)
+ score_list=list()
+ with open("eval.json","r",encoding="utf-8") as f:
+         query=js.load(f)
+ with open(p.Path(__file__).parent/"eval/scores.json","w",encoding="utf-8") as f:
+  for chunk_size in range(200,451,50):
+    
     TP1=0
     TP5=0
     MRC=0
@@ -26,8 +29,8 @@ def eval():
                     TP1+=1
         unique=True
             
-    with open(p.Path(__file__).parent/"eval/scores.json","w",encoding="utf-8") as f:
-           f.write("size of chunk:"+str(chunk_size)+": Recall@1:"+f"{(TP1/len(query)):.3f}"+" Recall@5: "+f"{(TP5/len(query)):.3f}"+" Mean Reciprocal Rank:"+f"{(MRC/len(query)):.3f}"+"\n")       
-    
+
+    score_list.append({"size of chunk":chunk_size,"Recall@1":round(TP1/len(query),3), "Recall@5":round((TP5/len(query)),3),"Mean Reciprocal Rank":round((MRC/len(query)),3)})      
+  js.dump(score_list,f)
 if __name__ == "__main__":
     eval()
