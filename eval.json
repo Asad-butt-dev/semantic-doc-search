@@ -1,0 +1,602 @@
+[
+  {
+    "query": "What are the four operator types used in the process-tree representation presented in the lecture?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What are the canonical convolution and correlogram intended to capture in time-kernel CCA?",
+    "file_name": "lecture03.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is information gain defined from the entropy before and after splitting on a feature?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What LTL formula shown in the lecture expresses a strong fairness constraint from condition b to condition c?",
+    "file_name": "mc2024-lec14-slides.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What is the formal difference between a simulation relation and a bisimulation relation?",
+    "file_name": "mc2024-lec16-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Under what double-centering condition does metric multidimensional scaling become equivalent to PCA?",
+    "file_name": "lecture02.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What does the cycle condition require of actions that are enabled at states lying on a cycle in the reduced transition system?",
+    "file_name": "mc2024-lec18-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why are process trees attractive for process mining with respect to block structure and soundness?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is the Hessian matrix defined in the second-order optimization section, and why can its computation and inversion become expensive?",
+    "file_name": "EleMLDS-ws24-part08-svms1.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the anti-monotonicity property of support that allows Apriori to prune candidate itemsets?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What sequence of steps does the ID3 algorithm use to choose a descriptive feature and recursively construct a decision tree?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why are the LLE reconstruction weights invariant to rotations, rescalings, and translations of a data point together with its neighbors?",
+    "file_name": "lecture01.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does the Inductive Miner use recursively discovered cuts to construct a process model from an event log?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the crowding problem in stochastic neighbor embedding, and how does t-SNE address it?",
+    "file_name": "lecture02.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Which graph algorithm is proposed for finding strongly connected components consisting only of stutter steps?",
+    "file_name": "mc2024-lec17-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How are process discovery and conformance checking positioned as unsupervised and supervised process-mining tasks in the lecture?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What box constraint on the dual variables distinguishes the soft-margin SVM dual from the hard-margin formulation?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does kernel CCA extend ordinary CCA to capture nonlinear dependencies?",
+    "file_name": "lecture03.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the time complexity of the Viterbi trellis procedure shown for a sequence of length L and label set Y, compared with naive enumeration?",
+    "file_name": "lecture06.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "In the continuous-feature example, which candidate threshold achieves the highest information gain among 1500, 2500, 3250, and 4250?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is trace equivalence between two transition systems defined?",
+    "file_name": "mc2024-lec12-13-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does LLE combine independently computed local reconstruction weights with a global N-by-N eigensolver to recover manifold structure?",
+    "file_name": "lecture01.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What assumptions about cluster shape and density limit the applicability of k-means?",
+    "file_name": "EleMLDS-ws24-part13-clustering.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why can Isomap improve over linear interpolation while still being unable to create genuinely new images between training examples?",
+    "file_name": "lecture02.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why is k-means sensitive to outliers and to the choice of initial cluster centers?",
+    "file_name": "EleMLDS-ws24-part13-clustering.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What reconstruction-error objective is minimized to determine the local linear weights in LLE?",
+    "file_name": "lecture01.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What are the main candidate-generation and pruning steps of the Apriori algorithm?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the purpose of pruning a decision tree, and how does it relate to overfitting?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is Shannon expansion for a Boolean switching function with respect to a selected variable?",
+    "file_name": "mc2024-lec19-slides.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "Why do overlapping local neighborhoods provide information about global geometry in the LLE framework?",
+    "file_name": "lecture01.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is the support of an itemset defined relative to a transaction database?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does FP-Growth avoid explicitly generating the same large candidate sets as Apriori?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Which logical fragment is matched by divergence-sensitive stutter bisimulation in the lecture's summary table?",
+    "file_name": "mc2024-lec17-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "For a finitely branching transition system, what equivalence does the lecture establish between bisimilarity, CTL equivalence, and CTL-star equivalence?",
+    "file_name": "mc2024-lec12-13-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does logistic regression require fewer parameters than a generative Gaussian classifier with class-specific means and covariance parameters in a high-dimensional feature space?",
+    "file_name": "EleMLDS-ws24-part08-svms1.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Which logical fragment is strongly preserved by simulation according to the lecture's preservation discussion?",
+    "file_name": "mc2024-lec16-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does partial-order reduction exploit the fact that different orderings of independent actions can represent equivalent behavior?",
+    "file_name": "mc2024-lec18-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why can the dual SVM formulation be advantageous in very high-dimensional feature spaces?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the difference between minimum support and minimum support count in the lecture's notation?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What distinction between linear-time and branching-time reasoning motivates the introduction of CTL?",
+    "file_name": "mc2024-lec10-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is the metric multidimensional-scaling cost defined in terms of discrepancies between pairwise high-dimensional and low-dimensional distances?",
+    "file_name": "lecture02.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "Why does the theorem connecting bisimilarity with CTL and CTL-star equivalence require the transition system to be finitely branching?",
+    "file_name": "mc2024-lec12-13-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What problem motivates time-kernel CCA when simultaneously recorded datasets have non-instantaneous couplings?",
+    "file_name": "lecture03.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the Newton-Raphson update rule presented for second-order optimization of logistic regression?",
+    "file_name": "EleMLDS-ws24-part08-svms1.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does symbolic CTL model checking use switching functions and binary decision diagrams instead of explicitly enumerating states?",
+    "file_name": "mc2024-lec19-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does the cutting-plane procedure reduce an optimization problem with exponentially many structured-output constraints?",
+    "file_name": "lecture06.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What conditional-independence structure does a first-order Markov model impose on a sequence of random variables?",
+    "file_name": "lecture04.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "Why can ordinary entropy-based information gain favor features with many distinct values, and how does information gain ratio address this bias?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is entropy computed for a class distribution in the decision-tree lecture?",
+    "file_name": "EleMLDS-ws24-part12-decision_trees.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What minimum information must an event contain in process mining, and how does event data differ from regularly sampled time-series data?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What objective function does k-means minimize over cluster assignments and centroids?",
+    "file_name": "EleMLDS-ws24-part13-clustering.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "In the agglomerative-clustering country example, which distance measure between instances and which linkage strategy between clusters are used?",
+    "file_name": "EleMLDS-ws24-part13-clustering.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the state-based semantics of the CTL formula EX Phi?",
+    "file_name": "mc2024-lec10-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Which empirical auto-covariance and cross-covariance matrices are computed from centered data to obtain the CCA solution?",
+    "file_name": "lecture03.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "Why is direct frequency estimation infeasible for the Caltech101 silhouette example with 28-by-28 binary images?",
+    "file_name": "lecture04.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How do trace equivalence and bisimulation equivalence differ in the behavioral distinctions they preserve?",
+    "file_name": "mc2024-lec12-13-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How are fairness assumptions incorporated into LTL model checking according to the fairness lecture?",
+    "file_name": "mc2024-lec14-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What factorization of a sequence probability follows from the Markov assumption used in the lecture?",
+    "file_name": "lecture04.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What condition makes a block or super-block a splitter during bisimulation partition refinement?",
+    "file_name": "mc2024-lec15-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How are slack variables introduced in the soft-margin SVM to handle training data that are not linearly separable?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why is fairness typically needed to establish liveness properties but does not change safety properties?",
+    "file_name": "mc2024-lec14-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does the lecture describe the cross-entropy error of logistic regression as having a unique minimum?",
+    "file_name": "EleMLDS-ws24-part08-svms1.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does k-medoids differ from k-means in its choice of cluster representatives, and why does this make it more robust to outliers?",
+    "file_name": "EleMLDS-ws24-part13-clustering.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does repeated partition refinement eventually produce the coarsest bisimulation equivalence on a finite transition system?",
+    "file_name": "mc2024-lec15-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What joint kernel is used in the lecture's multi-class classification special case, and what feature-map structure does it induce?",
+    "file_name": "lecture06.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does Isomap modify ordinary multidimensional scaling to preserve manifold geometry?",
+    "file_name": "lecture02.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the primal optimization problem for a soft-margin SVM including the slack-variable penalty parameter?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does CTL combine path quantifiers with temporal operators to express branching-time properties?",
+    "file_name": "mc2024-lec10-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why is cosine similarity especially suitable for comparing sparse document vectors of different lengths?",
+    "file_name": "EleMLDS-ws24-part18-natural_language_processing.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is an abstraction function used to construct an abstract transition system in the simulation lecture?",
+    "file_name": "mc2024-lec16-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does imposing local dependence structure make probabilistic modeling of high-dimensional observations tractable compared with estimating a full joint distribution?",
+    "file_name": "lecture04.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is localization reduction, and how does it use visible and invisible program variables?",
+    "file_name": "mc2024-lec16-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What three-step procedure is used to remove stutter cycles before quotienting for divergence-sensitive stutter bisimulation?",
+    "file_name": "mc2024-lec17-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What does it mean for two actions to be independent in partial-order reduction?",
+    "file_name": "mc2024-lec18-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the difference between stemming and lemmatization in the text-normalization pipeline?",
+    "file_name": "EleMLDS-ws24-part18-natural_language_processing.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What optimization in splitter selection is associated with the Paige-Tarjan partition-refinement strategy?",
+    "file_name": "mc2024-lec15-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does the hinge loss penalize correctly classified points that are already beyond the margin?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is structured prediction reformulated as learning a scoring function over joint input-output pairs rather than directly learning a map from inputs to outputs?",
+    "file_name": "lecture06.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does weak fairness fail to rule out starvation in the example where an entry action is enabled infinitely often but not continuously?",
+    "file_name": "mc2024-lec14-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What optimization criterion defines the canonical variates in canonical correlation analysis?",
+    "file_name": "lecture03.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does divergence-sensitive stutter bisimulation refine ordinary stutter bisimulation?",
+    "file_name": "mc2024-lec17-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the TF-IDF scoring formula presented in the lecture?",
+    "file_name": "EleMLDS-ws24-part18-natural_language_processing.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What makes a frequent itemset maximal, and how does this differ from being closed?",
+    "file_name": "EleMLDS-ws24-part14-frequent-itemsets.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why are reduced ordered binary decision diagrams canonical once a variable ordering is fixed?",
+    "file_name": "mc2024-lec19-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What prediction rule selects the output structure from the scoring function f(y|x) in the structured-prediction framework?",
+    "file_name": "lecture06.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "What role does Sequential Minimal Optimization play in efficiently solving the sparse dual SVM problem?",
+    "file_name": "EleMLDS-ws24-part09-svms2.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Which properties of interest are preserved when a transition system is reduced by bisimulation quotienting?",
+    "file_name": "mc2024-lec15-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does bisimilarity imply simulation equivalence while the converse does not generally hold?",
+    "file_name": "mc2024-lec16-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How does a hidden Markov model distinguish between hidden state variables and observed variables?",
+    "file_name": "lecture04.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the role of an ample set in selecting only a subset of enabled actions during partial-order reduction?",
+    "file_name": "mc2024-lec18-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How do unconditional, strong, and weak fairness differ in terms of when an action or thread is required to occur infinitely often?",
+    "file_name": "mc2024-lec14-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What is the state-based semantics of the CTL formula E(Phi U Psi)?",
+    "file_name": "mc2024-lec10-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What two reduction rules are repeatedly applied to turn an ordered binary decision diagram into a reduced OBDD?",
+    "file_name": "mc2024-lec19-slides.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "Why does interleaving semantics create a state-space explosion for independent concurrent actions?",
+    "file_name": "mc2024-lec18-slides.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What primal large-margin optimization problem is used for structured outputs with one slack variable per training example?",
+    "file_name": "lecture06.pdf",
+    "specificity": "specific",
+    "content_type": "formula"
+  },
+  {
+    "query": "How does the Continuous Bag of Words variant of Word2Vec use context words to predict a target word?",
+    "file_name": "EleMLDS-ws24-part18-natural_language_processing.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What does trace-level fitness measure in conformance checking?",
+    "file_name": "EleMLDS-ws24-part17-process_mining-handout.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is TF-IDF intended to balance a term's frequency within one document against its frequency across the corpus?",
+    "file_name": "EleMLDS-ws24-part18-natural_language_processing.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "What conditions must a symmetric relation satisfy to be a stutter bisimulation on a transition system?",
+    "file_name": "mc2024-lec17-notes.pdf",
+    "specificity": "specific",
+    "content_type": "conceptual"
+  },
+  {
+    "query": "How is a quotient transition system constructed from equivalence classes under bisimulation?",
+    "file_name": "mc2024-lec15-notes.pdf",
+    "specificity": "broad",
+    "content_type": "conceptual"
+  }
+]
