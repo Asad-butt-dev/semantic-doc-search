@@ -10,7 +10,7 @@ def eval():
  with open("eval.json","r",encoding="utf-8") as f:
          query=js.load(f)
  with open(p.Path(__file__).parent/"eval/scores.json","w",encoding="utf-8") as f:
-  for chunk_size in range(200,451,50):
+  for chunk_size in range(200,651,50):
     
     TP1=0
     TP5=0
@@ -30,7 +30,7 @@ def eval():
         unique=True
             
 
-    score_list.append({"size of chunk":chunk_size,"Recall@1":round(TP1/len(query),3), "Recall@5":round((TP5/len(query)),3),"Mean Reciprocal Rank":round((MRC/len(query)),3)})      
+    score_list.append({"Size of chunk":chunk_size,"Recall@1":round(TP1/len(query),3), "Recall@5":round((TP5/len(query)),3),"Mean Reciprocal Rank":round((MRC/len(query)),3)})      
   js.dump(score_list,f)
 if __name__ == "__main__":
     eval()
