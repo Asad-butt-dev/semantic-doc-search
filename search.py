@@ -17,7 +17,7 @@ def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,b
       query_vector=model.encode_query(query)
     scores=(query_vector*vectors)
     scores=scores.sum(axis=1)/(((query_vector**2).sum(axis=0)**0.5)*((vectors**2).sum(axis=1)**0.5))
-    add_bonus_vector=scores
+    add_bonus_vector=scores.copy()
     if use_hybrid:
       dic=build_term_index(key_terms,str(chunk_size))
       bonus_list=np.zeros((len(chunks),))
@@ -27,7 +27,7 @@ def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,b
     
     result=add_bonus_vector.argsort(axis=0)    
     if use_hybrid:
-      return [{**chunks[i],"score":float(scores[i]),"bonus":bonus_list[i]} for i in result[-5:][::-1]]
+      return [{**chunks[i],"score":float(scores[i]),"bonus":float(bonus_list[i])} for i in result[-5:][::-1]]
     else:
       return [{**chunks[i],"score":float(scores[i])} for i in result[-5:][::-1]]
 
