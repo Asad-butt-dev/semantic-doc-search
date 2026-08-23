@@ -54,7 +54,7 @@ function App() {
       <Checkbox checked={hybrid} onChange={e => setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
       <TextInput value={chunkSize} onChange={e => setChunkSize(e.target.value)} placeholder="Chunksize" label="Chunksize (200-650)" />
       <TextInput value={terms} onChange={e => setTerms(e.target.value)} placeholder='Terminology' label="Terminology" />
-      <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus" />
+      <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.5)" />
 
       <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
 
