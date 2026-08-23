@@ -32,14 +32,15 @@ function App() {
       setError(null)
       const answer = await fetch(url);
       if (!answer.ok ) {
-        throw new Error(answer.status.toString())
+        setError(`Search failed with status ${answer.status}`);
+        return;
       }
       const data = await answer.json();
       setResults(data);
 
     } catch (error) {
-      setError(String(error));
-      console.log(error);
+      setError("Could not reach the Server");
+      console.error(error);
       setResults([]);
     }
     finally {
@@ -62,7 +63,7 @@ function App() {
 
       <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
 
-      <div> {loading ? <p>Searching...</p> : results.map(r => (<Paper withBorder shadow="xl" radius="md" p="md"  key={`${r.file_name}-${r.chunk_number}`}><h3>{r.file_name} Chunk: {r.chunk_number} cosinus similarity:{r.score.toFixed(3)} bonus +{r.bonus} </h3><p> {r.text.slice(0, 300)}</p> </Paper>))} </div>
+      <div> {loading ? <p>Searching...</p> : results.map(r => (<Paper withBorder shadow="xl" radius="md" p="md"  key={`${r.file_name}-${r.chunk_number}`}><h3>{r.file_name} Chunk: {r.chunk_number} cosinus similarity:{r.score.toFixed(3)} bonus +{r.bonus.toFixed(3)} </h3><p> {r.text.slice(0, 300)}</p> </Paper>))} </div>
       {error && <p role="alert" style={{ color: "red" }}> {error} </p>}
     </Stack>
 
