@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react'
+import { TextInput, Button, Checkbox } from '@mantine/core';
 interface SearchResult {
   text: String;
   fileName: String;
@@ -49,14 +50,16 @@ function App() {
 
   return (
     <div>
-      <input type="text" placeholder='Input' value={query} onChange={e => setQuery(e.target.value)} />
-      <input type='text' placeholder='Chunksize' value={chunkSize} onChange={e => setChunkSize(e.target.value)} />
-      <input type="checkbox" checked={hybrid} onChange={e => setHybrid(e.target.checked)} /> <label>HybridSearch</label>
-      <input type='text' placeholder='Terminology' value={terms} onChange={e => setTerms(e.target.value)} />
-      <input type="text" placeholder='bonus' value={bonus} onChange={e => setBonus(e.target.value)}  />
-      <button onClick={handleSearch} disabled={!query.trim()||loading}> Search </button>
+      <TextInput value={query}  onChange={e => setQuery(e.target.value)} placeholder="Search..."
+  label="Query"/> 
+     <Checkbox checked={hybrid} onChange={e=>setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
+      <TextInput value={chunkSize} onChange={e=>setChunkSize(e.target.value)} placeholder="Chunksize" label="Chunksize"/> 
+      <TextInput value={terms} onChange={e=>setTerms(e.target.value)} placeholder='Terminology' label="Terminilogy"  />
+      <TextInput  value={bonus} onChange={e=>setBonus(e.target.value)} placeholder="Bonus" label="Bonus"  />
+      <Button onClick={handleSearch} disabled={!query.trim()||loading}> Search</Button>
       <div> {loading ? <p>Searching...</p> : results.map(r => (<div key={`${r.fileName}-${r.chunkNumber}`}><h3>{r.fileName} Chunk: {r.chunkNumber} cosinus similarity:{r.score.toFixed(3)} bonus +{r.bonus} </h3><p> {r.text.slice(0, 300)}</p> </div>))} </div>
     { error && <p  role="alert" style={{color:"red"}}> {error} </p>}
+     
     </div>
     
   )
