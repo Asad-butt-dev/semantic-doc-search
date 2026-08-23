@@ -5,14 +5,15 @@ import numpy as np
 import json as js
 from typing import TypedDict
 from sentence_transformers import SentenceTransformer as ST
-
+import os
+os.environ["HF_HUB_OFFLINE"] = "1"
 MODELS = {
     "minilm-multi": "paraphrase-multilingual-MiniLM-L12-v2",
     "e5-base": "intfloat/multilingual-e5-base",
     "minilm-en": "sentence-transformers/all-MiniLM-L6-v2",
 }
-model=ST(MODELS["e5-base"])
-model_name="e5-base"
+model=ST(MODELS["minilm-en"])
+model_name="minilm-en"
 DATA_DIR=p.Path(__file__).parent/"data"
 DATA_DIR.mkdir(exist_ok=True)
 class Chunk(TypedDict):
@@ -52,10 +53,7 @@ def read_all_data(chunk_size:int)->list[Chunk]:
         chunks.extend(load_chunks(i,chunk_size))
     return chunks
 def embedd(chunk_size:str,chunks:list):
-  if model_name=="minilm-multi":
-    vectors=model.encode([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
-  elif model_name=="e5-base":
-    vectors=model.encode_document([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
+  vectors=model.encode_document([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
   np.save(DATA_DIR/f"vectors_{chunk_size}_{model_name}.npy",vectors)
   with open(DATA_DIR/f"chunks_{chunk_size}_{model_name}.json","w",encoding="utf-8") as f:
         
