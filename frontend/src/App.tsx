@@ -1,14 +1,9 @@
 import './App.css'
 import { useState } from 'react'
 import { TextInput, Button, Checkbox, Stack, Paper } from '@mantine/core';
-interface SearchResult {
-  text: String;
-  file_name: String;
-  chunk_number: number;
-  score: number;
-  bonus: number;
-
-}
+import "./ResultList"
+import  type {SearchResult} from "./types"
+import ResultList from './ResultList';
 
 function App() {
   const [query, setQuery] = useState("");
@@ -63,7 +58,7 @@ function App() {
 
       <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
 
-      <div> {loading ? <p>Searching...</p> : results.map(r => (<Paper withBorder shadow="xl" radius="md" p="md"  key={`${r.file_name}-${r.chunk_number}`}><h3>{r.file_name} Chunk: {r.chunk_number} cosinus similarity:{r.score.toFixed(3)} bonus +{r.bonus.toFixed(3)} </h3><p> {r.text.slice(0, 300)}</p> </Paper>))} </div>
+      <div> {loading ? <p>Searching...</p> :<ResultList results={results}/> }</div>
       {error && <p role="alert" style={{ color: "red" }}> {error} </p>}
     </Stack>
 
