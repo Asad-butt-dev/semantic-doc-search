@@ -1,12 +1,15 @@
 import json as js 
 import numpy as np
 import pathlib as p
-from sentence_transformers import SentenceTransformer as ST
 from search import search_chunks
-
+from read import model_name
 
 def eval():
  score_list=list()
+ if (p.Path(__file__).parent/"eval/scores.json").exists and (p.Path(__file__).parent/"eval/scores.json").stat().st_size>0:
+  with open(p.Path(__file__).parent/"eval/scores.json","r",encoding="utf-8") as f:
+    score_list.extend(js.load(f))
+ score_list.append({"model name":model_name})
  with open("eval.json","r",encoding="utf-8") as f:
          query=js.load(f)
  with open(p.Path(__file__).parent/"eval/scores.json","w",encoding="utf-8") as f:
