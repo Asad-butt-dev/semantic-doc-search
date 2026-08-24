@@ -12,6 +12,11 @@ MODELS = {
     "e5-base": "intfloat/multilingual-e5-base",
     "minilm-en": "sentence-transformers/all-MiniLM-L6-v2",
 }
+MODElS_MAX_TOKEN={   "minilm-multi": 128,
+    "e5-base": 512,
+    "minilm-en": 256,
+    
+}
 model=ST(MODELS["minilm-en"])
 model_name="minilm-en"
 DATA_DIR=p.Path(__file__).parent/"data"
