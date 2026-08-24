@@ -1,6 +1,6 @@
 import './App.css'
 import { useState } from 'react'
-import { TextInput, Button, Checkbox, Stack, Paper } from '@mantine/core';
+import { TextInput, Button, Checkbox, Stack,} from '@mantine/core';
 import "./ResultList"
 import  type {SearchResult} from "./types"
 import ResultList from './ResultList';
