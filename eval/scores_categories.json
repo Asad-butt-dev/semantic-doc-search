@@ -1,0 +1,242 @@
+[
+    {
+        "200": {
+            "conceptual": {
+                "Recall@1": 0.8749999999999989,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.9097916666666653
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.75,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.81875
+            },
+            "specific": {
+                "Recall@1": 0.8970588235294104,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.9129901960784299
+            }
+        }
+    },
+    {
+        "250": {
+            "conceptual": {
+                "Recall@1": 0.8249999999999991,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.8812499999999989
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.78125,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.8385416666666667
+            },
+            "specific": {
+                "Recall@1": 0.8235294117647047,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.870098039215685
+            }
+        }
+    },
+    {
+        "300": {
+            "conceptual": {
+                "Recall@1": 0.849999999999999,
+                "Recall@5": 0.9499999999999986,
+                "Mean Reciprocal Rank": 0.8858333333333321
+            },
+            "formula": {
+                "Recall@1": 0.7000000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7500000000000002
+            },
+            "broad": {
+                "Recall@1": 0.84375,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.8604166666666666
+            },
+            "specific": {
+                "Recall@1": 0.8088235294117636,
+                "Recall@5": 0.9264705882352926,
+                "Mean Reciprocal Rank": 0.8578431372549007
+            }
+        }
+    },
+    {
+        "350": {
+            "conceptual": {
+                "Recall@1": 0.849999999999999,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.8962499999999989
+            },
+            "formula": {
+                "Recall@1": 0.7000000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7500000000000001
+            },
+            "broad": {
+                "Recall@1": 0.78125,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.8359375
+            },
+            "specific": {
+                "Recall@1": 0.8382352941176459,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.8816176470588223
+            }
+        }
+    },
+    {
+        "400": {
+            "conceptual": {
+                "Recall@1": 0.8249999999999991,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.8812499999999989
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.78125,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.8333333333333334
+            },
+            "specific": {
+                "Recall@1": 0.8235294117647047,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.8725490196078418
+            }
+        }
+    },
+    {
+        "450": {
+            "conceptual": {
+                "Recall@1": 0.8874999999999988,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.9187499999999987
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.875,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.890625
+            },
+            "specific": {
+                "Recall@1": 0.852941176470587,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.8897058823529398
+            }
+        }
+    },
+    {
+        "500": {
+            "conceptual": {
+                "Recall@1": 0.8249999999999991,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.8847916666666655
+            },
+            "formula": {
+                "Recall@1": 0.7000000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7500000000000001
+            },
+            "broad": {
+                "Recall@1": 0.78125,
+                "Recall@5": 0.90625,
+                "Mean Reciprocal Rank": 0.84375
+            },
+            "specific": {
+                "Recall@1": 0.8088235294117636,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.8644607843137242
+            }
+        }
+    },
+    {
+        "550": {
+            "conceptual": {
+                "Recall@1": 0.837499999999999,
+                "Recall@5": 0.9749999999999985,
+                "Mean Reciprocal Rank": 0.8979166666666655
+            },
+            "formula": {
+                "Recall@1": 0.7000000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7500000000000001
+            },
+            "broad": {
+                "Recall@1": 0.84375,
+                "Recall@5": 0.9375,
+                "Mean Reciprocal Rank": 0.890625
+            },
+            "specific": {
+                "Recall@1": 0.7941176470588225,
+                "Recall@5": 0.9411764705882337,
+                "Mean Reciprocal Rank": 0.8578431372549008
+            }
+        }
+    },
+    {
+        "600": {
+            "conceptual": {
+                "Recall@1": 0.8749999999999989,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.9024999999999987
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.8125,
+                "Recall@5": 0.9375,
+                "Mean Reciprocal Rank": 0.8567708333333334
+            },
+            "specific": {
+                "Recall@1": 0.8676470588235281,
+                "Recall@5": 0.9264705882352926,
+                "Mean Reciprocal Rank": 0.8865196078431359
+            }
+        }
+    },
+    {
+        "650": {
+            "conceptual": {
+                "Recall@1": 0.8624999999999989,
+                "Recall@5": 0.9624999999999986,
+                "Mean Reciprocal Rank": 0.9031249999999988
+            },
+            "formula": {
+                "Recall@1": 0.7500000000000001,
+                "Recall@5": 0.8000000000000002,
+                "Mean Reciprocal Rank": 0.7750000000000001
+            },
+            "broad": {
+                "Recall@1": 0.875,
+                "Recall@5": 0.9375,
+                "Mean Reciprocal Rank": 0.8984375
+            },
+            "specific": {
+                "Recall@1": 0.8235294117647047,
+                "Recall@5": 0.9264705882352926,
+                "Mean Reciprocal Rank": 0.8676470588235281
+            }
+        }
+    }
+]
