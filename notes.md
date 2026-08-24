@@ -6,7 +6,105 @@ Not documentation — this is for decisions, dead ends, and open questions.
 ---
 
 ## Decisions
-### 2026-08-20 — Model comparison: MiniLM-multi vs E5-base
+### 2026-08-24 — Hybrid search: built, not evaluated
+
+The term-bonus path is implemented and works in the UI, but I am not running a
+parameter sweep over the bonus weight, and the reason is the numbers rather
+than the effort.
+
+Baseline Recall@5 sits at 0.930 with `all-MiniLM-L6-v2`. The ceiling is 0.96,
+because four of the 100 queries target a document that contributes no chunks.
+That leaves three percentage points of headroom — three queries. Any weight
+that appeared to help or hurt inside that margin would be indistinguishable
+from noise at n=100, where one standard error is already ~0.025.
+
+A second problem: the eval set carries no per-query terms. Measuring hybrid
+search would mean deriving them from the query text (stopword removal, length
+filter), which makes the experiment a test of that extraction heuristic as much
+as of the bonus itself. Two variables, one number.
+
+Third, an observation from manual use: when the same term matches every
+retrieved chunk, the bonus shifts all scores by the same amount and changes no
+ranking at all. Whether the bonus does anything depends entirely on how
+unevenly the terms are distributed — which the current setup does not control
+for.
+
+Worth revisiting on a corpus where the semantic baseline leaves real room, or
+with BM25 as a proper second ranker instead of an additive bonus. Not here.
+### 2026-08-24 — Category breakdown, and what it actually showed
+
+Broke Recall@1/@5/MRR down by `content_type` and `specificity`, averaged over
+all ten chunk sizes with `all-MiniLM-L6-v2`.
+
+conceptual (n=80): R@1 0.851, R@5 0.963, MRR 0.896
+formula    (n=20): R@1 0.730, R@5 0.800, MRR 0.765
+broad      (n=32): R@1 0.813, R@5 0.916, MRR 0.857
+specific   (n=68): R@1 0.834, R@5 0.937, MRR 0.876
+
+The formula gap looked like confirmation of the extraction hypothesis. It isn't.
+
+Formula Recall@5 came out at exactly 0.800 in all ten configurations — not
+approximately, identically. Four of twenty formula questions fail at every
+chunk size. Constant across configurations means structural, not noise, so I
+looked at which four.
+
+**All four target `lecture06.pdf`, and that file contributes zero chunks to the
+index.** It is image-based; pypdf extracts no text layer, so the document does
+not exist as far as retrieval is concerned. No model and no chunk size can
+recover it.
+
+So the conceptual/formula difference is largely a *document* effect, not a
+content effect. Remove those four and the remaining 16 formula questions show
+little separation from conceptual ones. The hypothesis I set out to test is
+neither confirmed nor refuted here — a different cause got in the way first.
+
+**This affects every earlier number.** Four questions point at an unindexed
+document, so Recall@5 was capped at 0.96 from the start, across all three
+models and all ten chunk sizes. It penalises every configuration equally, so
+the model ranking stands, but the absolute figures are ceilinged.
+
+Keeping the four questions in the set rather than removing them: an evaluation
+that exposes a pipeline gap is more useful than one with the awkward cases
+deleted. Documented as a known ceiling instead.
+
+Specificity: no effect worth reporting (0.834 vs 0.813 on R@1, n=32 for broad —
+inside the noise).
+
+**Fix, not done yet:** OCR fallback when a PDF yields no text layer.
+
+
+### 2026-08-23 — Third model: English-only MiniLM
+
+Ran `all-MiniLM-L6-v2` across the same ten chunk sizes. It comes out on top —
+which was not the expected result. It is the smallest model of the three: half
+the layers of E5, half the embedding dimensions, half the context window. It
+still averages Recall@1 0.827 against E5's 0.805 and MRR 0.870 against 0.851.
+
+**What is statistically supported, and what is not.** Against the multilingual
+MiniLM, the English model wins at all ten chunk sizes — the same clean sweep E5
+produced, and a real result. Against E5 it wins only 7 of 10 on both Recall@1
+and MRR; by binomial test that is p ≈ 0.17, so the two are not distinguishable
+on this data. The defensible claim is narrow: the multilingual MiniLM is worse
+than the other two. Between E5 and the English MiniLM, this evaluation does not
+decide.
+
+**The chunk-size curves fit the truncation story.** E5 declines beyond ~450
+words (Recall@1 0.83 → 0.77), roughly where its 512-token window runs out. Both
+MiniLMs are flat across the whole range, because at 128 and 256 tokens every
+chunk size tested is already truncated — chunk size then only changes how many
+chunks exist, not how much of each is seen.
+
+**Practical reading:** for an English-only corpus, matching the model to the
+language appears to matter more than model size or context length. That is also
+the cheap option — the best-performing model here is the fastest and smallest
+one, which is a useful thing to know before reaching for a larger model by
+default.
+
+**Caveat, unchanged:** three variables differ between the two MiniLMs —
+language coverage, context window (128 vs 256) and depth (12 vs 6 layers). The
+effect is real; the cause is not isolated. Attributing it to language coverage
+alone would need two models differing only in that.
+### 2026-08-22 — Model comparison: MiniLM-multi vs E5-base
 
 Ran both models across ten chunk sizes (200–650 words), 100 queries, hybrid off.
 
@@ -139,6 +237,13 @@ Trade-off:
 | 2026-08-20 | intfloat/multilingual-e5-base | 512 | — | off | 0.805 | 0.916 | 0.851 | mean over 200–650 |
 
 
+
+| Date | Model | Layers/Dim | Max tokens | Chunk size | Recall@1 | Recall@5 | MRR | Notes |
+|------|-------|-----------|-----------|-----------|----------|----------|-----|-------|
+| 2026-08-21 | all-MiniLM-L6-v2 | 6 / 384 | 256 | 450 | 0.860 | 0.930 | 0.890 | best single config |
+| 2026-08-21 | all-MiniLM-L6-v2 | 6 / 384 | 256 | — | 0.827 | 0.930 | 0.870 | mean over 200–650 |
+| 2026-08-20 | multilingual-e5-base | 12 / 768 | 512 | — | 0.805 | 0.916 | 0.851 | mean over 200–650 |
+| 2026-08-20 | paraphrase-multilingual-MiniLM-L12-v2 | 12 / 384 | 128 | — | 0.743 | 0.884 | 0.794 | mean over 200–650 |
 Eval set: `eval.json`, N questions, target = correct source file in top 5.
 Questions deliberately avoid the exact wording used in the slides.
 
