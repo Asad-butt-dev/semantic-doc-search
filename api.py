@@ -1,11 +1,10 @@
 from fastapi import FastAPI,Query
 from search import search_chunks
 from fastapi.middleware.cors import CORSMiddleware
+import os 
 
 app = FastAPI()
-origins=[
-    "http://localhost:5173"
-]
+origins=os.environ.get("ALLOWED_ORIGINS","http://localhost:5173").split(",")
 app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
 
 @app.get("/search")
