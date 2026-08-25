@@ -4,7 +4,8 @@ import { TextInput, Button, Checkbox, Stack,} from '@mantine/core';
 import "./ResultList"
 import  type {SearchResult} from "./types"
 import ResultList from './ResultList';
-
+import.meta.env 
+const API_URL = import.meta.env.VITE_API_URL;
 function App() {
   const [query, setQuery] = useState("");
   const [chunkSize, setChunkSize] = useState("500");
@@ -20,7 +21,7 @@ function App() {
     for (let i = 0; i < termList.length; i++) {
       params.append("key_terms", termList[i]);
     }
-    const url = "http://127.0.0.1:8000/search?" + params;
+    const url = API_URL+ params;
     
     try {
       setLoading(true);
