@@ -5,7 +5,7 @@ import "./ResultList"
 import  type {SearchResult} from "./types"
 import ResultList from './ResultList';
 import.meta.env 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "/api";
 function App() {
   const [query, setQuery] = useState("");
   const [hybrid, setHybrid] = useState(false);
