@@ -8,7 +8,6 @@ import.meta.env
 const API_URL = import.meta.env.VITE_API_URL;
 function App() {
   const [query, setQuery] = useState("");
-  const [chunkSize, setChunkSize] = useState("500");
   const [hybrid, setHybrid] = useState(false);
   const [terms, setTerms] = useState("")
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -17,11 +16,11 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   async function handleSearch() {
     const termList = terms.split(",").map(a => a.trim())
-    const params = new URLSearchParams({ query: query, use_hybrid: String(hybrid), chunk_size: chunkSize, bonus: bonus })
+    const params = new URLSearchParams({ query: query, use_hybrid: String(hybrid), bonus: bonus })
     for (let i = 0; i < termList.length; i++) {
       params.append("key_terms", termList[i]);
     }
-    const url = API_URL+ params;
+    const url = API_URL+"/search?"+ params;
     
     try {
       setLoading(true);
@@ -53,9 +52,8 @@ function App() {
         <TextInput value={query} onChange={e => setQuery(e.target.value)} placeholder="Search..."
         label="Query" />
       <Checkbox checked={hybrid} onChange={e => setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
-      <TextInput value={chunkSize} onChange={e => setChunkSize(e.target.value)} placeholder="Chunksize" label="Chunksize (200-650)" />
       <TextInput value={terms} onChange={e => setTerms(e.target.value)} placeholder='Terminology' label="Terminology" />
-      <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.5)" />
+      <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.3)" />
 
       <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
 
