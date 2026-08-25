@@ -6,8 +6,6 @@ from read import DEFAULT_CHUNK_SIZE
 
 app = FastAPI()
 origins=os.environ.get("ALLOWED_ORIGINS","http://localhost:5173").split(",")
-app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
-
 @app.get("/search")
 def search(query:str,use_hybrid:bool,bonus:float=Query(default=0,ge=0,le=0.4),key_terms:list[str]=Query(default=[]),):
     return search_chunks(query,key_terms,use_hybrid,DEFAULT_CHUNK_SIZE,bonus)
