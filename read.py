@@ -17,8 +17,10 @@ MODElS_MAX_TOKEN={   "minilm-multi": 128,
     "minilm-en": 256,
     
 }
-model=ST(MODELS["minilm-en"])
-model_name="minilm-en"
+MODEL_NAME=os.environ.get("MODEL_KEY", "minilm-en")
+DEFAULT_CHUNK_SIZE=int(os.environ.get("DEFAULT_CHUNK_SIZE", "350"))
+MODEL=ST(MODELS[MODEL_NAME])
+
 DATA_DIR=p.Path(__file__).parent/"data"
 DATA_DIR.mkdir(exist_ok=True)
 class Chunk(TypedDict):
@@ -58,9 +60,9 @@ def read_all_data(chunk_size:int)->list[Chunk]:
         chunks.extend(load_chunks(i,chunk_size))
     return chunks
 def embedd(chunk_size:str,chunks:list):
-  vectors=model.encode_document([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
-  np.save(DATA_DIR/f"vectors_{chunk_size}_{model_name}.npy",vectors)
-  with open(DATA_DIR/f"chunks_{chunk_size}_{model_name}.json","w",encoding="utf-8") as f:
+  vectors=MODEL.encode_document([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
+  np.save(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}.npy",vectors)
+  with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","w",encoding="utf-8") as f:
         
      js.dump(chunks,f,ensure_ascii=False)
     
@@ -68,7 +70,7 @@ def embedd(chunk_size:str,chunks:list):
 
 
 if __name__=="__main__":
- for chunk_size in range(200,651,50):
-   chunks=read_all_data(chunk_size)
-   embedd(str(chunk_size),chunks)
+
+   chunks=read_all_data(DEFAULT_CHUNK_SIZE)
+   embedd(str(DEFAULT_CHUNK_SIZE),chunks)
    

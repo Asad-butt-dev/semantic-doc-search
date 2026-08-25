@@ -1,17 +1,17 @@
 import numpy as np
 import json as js
 from sentence_transformers import SentenceTransformer as ST
-from read import DATA_DIR,model,model_name
+from read import DATA_DIR,MODEL,MODEL_NAME
 
 
 
 
 def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,bonus:float)->list[dict]:
     chunks=list()
-    vectors=np.load(DATA_DIR/f"vectors_{chunk_size}_{model_name}.npy")
-    with open(DATA_DIR/f"chunks_{chunk_size}_{model_name}.json","r",encoding="utf-8") as f:
+    vectors=np.load(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}.npy")
+    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","r",encoding="utf-8") as f:
        chunks=js.load(f)
-    query_vector=model.encode_query(query)
+    query_vector=MODEL.encode_query(query)
     scores=(query_vector*vectors)
     scores=scores.sum(axis=1)/(((query_vector**2).sum(axis=0)**0.5)*((vectors**2).sum(axis=1)**0.5))
     add_bonus_vector=scores.copy()
@@ -32,7 +32,7 @@ def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,b
 def build_term_index(key_terms:list[str],chunk_size:str)-> dict[str, list[int]]:
     list_of_chunks=list()
     dic={}
-    with open(DATA_DIR/f"chunks_{chunk_size}_{model_name}.json","r",encoding="utf-8") as f:
+    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","r",encoding="utf-8") as f:
         list_of_chunks=js.load(f)
     for element in key_terms:
         dic[element]=list()
