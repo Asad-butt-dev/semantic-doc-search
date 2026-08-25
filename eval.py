@@ -3,7 +3,7 @@ import numpy as np
 import pathlib as p
 import copy
 from search import search_chunks
-from read import model_name,MODElS_MAX_TOKEN
+from read import MODEL_NAME,MODElS_MAX_TOKEN
 
 def eval():
  hard_queries=list()
@@ -11,7 +11,7 @@ def eval():
  if (p.Path(__file__).parent/"eval/scores.json").exists and (p.Path(__file__).parent/"eval/scores.json").stat().st_size>0:
   with open(p.Path(__file__).parent/"eval/scores.json","r",encoding="utf-8") as f:
     score_list.extend(js.load(f))
- with open("eval.json","r",encoding="utf-8") as f:
+ with open(p.Path(__file__).parent/"eval.json","r",encoding="utf-8") as f:
          query=js.load(f)
  with open(p.Path(__file__).parent/"eval/scores.json","w",encoding="utf-8") as f:
   for chunk_size in range(200,651,50):
@@ -36,7 +36,7 @@ def eval():
         unique=True
             
 
-    score_list.append({"model":model_name,"max_tokens":MODElS_MAX_TOKEN[model_name],"chunk_size":chunk_size,"hybrid":False,"Recall@1":round(TP1/len(query),3), "Recall@5":round((TP5/len(query)),3),"Mean Reciprocal Rank":round((MRC/len(query)),3)})      
+    score_list.append({"model":MODEL_NAME,"max_tokens":MODElS_MAX_TOKEN[MODEL_NAME],"chunk_size":chunk_size,"hybrid":False,"Recall@1":round(TP1/len(query),3), "Recall@5":round((TP5/len(query)),3),"Mean Reciprocal Rank":round((MRC/len(query)),3)})      
   js.dump(score_list,f)
   with open(p.Path(__file__).parent/"eval/hard_queries.json","w",encoding="utf-8") as f:
     js.dump(hard_queries,f)
