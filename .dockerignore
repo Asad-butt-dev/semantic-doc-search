@@ -16,5 +16,5 @@ eval/
 .git/
 
 data/*
-!data/chunks_350_minilm-en.json
-!data/vectors_350_minilm-en.npy
+!data/chunks_350_minilm-en_arxiv.json
+!data/vectors_350_minilm-en_arxiv.npy
