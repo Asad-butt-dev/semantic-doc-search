@@ -1,0 +1,6 @@
+asadbutt.de {
+    reverse_proxy frontend:80
+}
+search.asadbutt.de {
+    reverse_proxy frontend:80
+}
