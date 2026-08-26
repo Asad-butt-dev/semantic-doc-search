@@ -21,7 +21,7 @@ MODEL_NAME=os.environ.get("MODEL_KEY", "minilm-en")
 DEFAULT_CHUNK_SIZE=int(os.environ.get("DEFAULT_CHUNK_SIZE", "350"))
 MODEL=ST(MODELS[MODEL_NAME])
 
-DATA_DIR=p.Path(__file__).parent/"data_2"
+DATA_DIR=p.Path(__file__).parent/"data"
 DATA_DIR.mkdir(exist_ok=True)
 class Chunk(TypedDict):
     text:str 
