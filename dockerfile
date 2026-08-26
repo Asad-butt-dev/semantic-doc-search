@@ -5,6 +5,6 @@ RUN pip install -r requirements.txt
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
 ENV HF_HUB_OFFLINE=1
 COPY read.py api.py search.py ./
-COPY data_2/chunks_350_minilm-en.json data/vectors_350_minilm-en.npy ./data/
+COPY data_2/chunks_350_minilm-en.json data/vectors_350_minilm-en.npy ./data_2/
 EXPOSE 8000 
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
