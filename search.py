@@ -8,8 +8,8 @@ from read import DATA_DIR,MODEL,MODEL_NAME
 
 def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,bonus:float)->list[dict]:
     chunks=list()
-    vectors=np.load(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}.npy")
-    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","r",encoding="utf-8") as f:
+    vectors=np.load(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}_arxiv.npy")
+    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}_arxiv.json","r",encoding="utf-8") as f:
        chunks=js.load(f)
     query_vector=MODEL.encode_query(query)
     scores=(query_vector*vectors)
@@ -32,7 +32,7 @@ def search_chunks(query:str,key_terms:list[str],use_hybrid:bool,chunk_size:int,b
 def build_term_index(key_terms:list[str],chunk_size:str)-> dict[str, list[int]]:
     list_of_chunks=list()
     dic={}
-    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","r",encoding="utf-8") as f:
+    with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}_arxiv.json","r",encoding="utf-8") as f:
         list_of_chunks=js.load(f)
     for element in key_terms:
         dic[element]=list()

@@ -61,8 +61,8 @@ def read_all_data(chunk_size:int)->list[Chunk]:
     return chunks
 def embedd(chunk_size:str,chunks:list):
   vectors=MODEL.encode_document([chunks[i]["text"] for i in range(0,len(chunks))],show_progress_bar=True)
-  np.save(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}_.npy",vectors)
-  with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}.json","w",encoding="utf-8") as f:
+  np.save(DATA_DIR/f"vectors_{chunk_size}_{MODEL_NAME}_arxiv.npy",vectors)
+  with open(DATA_DIR/f"chunks_{chunk_size}_{MODEL_NAME}_arxiv.json","w",encoding="utf-8") as f:
         
      js.dump(chunks,f,ensure_ascii=False)
     
