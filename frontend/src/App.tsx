@@ -1,6 +1,6 @@
 import './App.css'
 import { useState } from 'react'
-import { TextInput, Button, Checkbox, Stack, Title, Text ,Anchor} from '@mantine/core';
+import { TextInput, Button, Checkbox, Stack, Title, Text, Anchor, Chip, Group } from '@mantine/core';
 import "./ResultList"
 import type { SearchResult } from "./types"
 import ResultList from './ResultList';
@@ -14,6 +14,11 @@ function App() {
   const [bonus, setBonus] = useState("0");
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null);
+  const examples = [
+  "What are PLM-based Rerankers?",
+  "How does the quality of data annotation influence scaling effects?",
+  "How does the process begin when adapting a retrieval model to a new domain without labels?",
+];
   async function handleSearch() {
     const termList = terms.split(",").map(a => a.trim())
     const params = new URLSearchParams({ query: query, use_hybrid: String(hybrid), bonus: bonus })
@@ -62,6 +67,14 @@ function App() {
       <Checkbox checked={hybrid} onChange={e => setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
       <TextInput value={terms} onChange={e => setTerms(e.target.value)} placeholder='Terminology' label="Terminology" />
       <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.3)" />
+      <Text c="dimmed">Example queries</Text>
+      <Chip.Group value={query} onChange={setQuery}>
+        <Group>
+          {examples.map(q => (
+            <Chip key={q} value={q}>{q}</Chip>
+          ))}
+        </Group>
+      </Chip.Group>
 
       <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
 
