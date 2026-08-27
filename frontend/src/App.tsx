@@ -1,6 +1,6 @@
 import './App.css'
 import { useState } from 'react'
-import { TextInput, Button, Checkbox, Stack, Title, Text, Anchor, Chip, Group } from '@mantine/core';
+import { TextInput, Button, Checkbox, Stack, Title, Text, Anchor, Chip, Group, Accordion } from '@mantine/core';
 import "./ResultList"
 import type { SearchResult } from "./types"
 import ResultList from './ResultList';
@@ -15,10 +15,10 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null);
   const examples = [
-  "What are PLM-based Rerankers?",
-  "How does the quality of data annotation influence scaling effects?",
-  "How does the process begin when adapting a retrieval model to a new domain without labels?",
-];
+    "What are PLM-based Rerankers?",
+    "How does the quality of data annotation influence scaling effects?",
+    "How does the process begin when adapting a retrieval model to a new domain without labels?",
+  ];
   async function handleSearch() {
     const termList = terms.split(",").map(a => a.trim())
     const params = new URLSearchParams({ query: query, use_hybrid: String(hybrid), bonus: bonus })
@@ -64,9 +64,19 @@ function App() {
       </Anchor>
       <TextInput value={query} onChange={e => setQuery(e.target.value)} placeholder="Search..."
         label="Query" />
-      <Checkbox checked={hybrid} onChange={e => setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
-      <TextInput value={terms} onChange={e => setTerms(e.target.value)} placeholder='Terminology' label="Terminology" />
-      <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.3)" />
+     
+      <Accordion>
+        <Accordion.Item value="advanced">
+          <Accordion.Control>Advanced search options</Accordion.Control>
+          <Accordion.Panel>
+            <Checkbox checked={hybrid} onChange={e => setHybrid(e.target.checked)} placeholder='Hybrid' label="HybridSearch" />
+            <TextInput value={terms} onChange={e => setTerms(e.target.value)} placeholder='Terminology' label="Terminology" />
+            <TextInput value={bonus} onChange={e => setBonus(e.target.value)} placeholder="Bonus" label="Bonus (0.1-0.3)" />
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+
+
       <Text c="dimmed">Example queries</Text>
       <Chip.Group value={query} onChange={setQuery}>
         <Group>
@@ -75,9 +85,9 @@ function App() {
           ))}
         </Group>
       </Chip.Group>
-
-      <Button onClick={handleSearch} disabled={!query.trim() || loading}> Search</Button>
-
+      <Group>
+        <Button onClick={handleSearch} disabled={!query.trim() || loading} > Search</Button>
+      </Group>
       <div> {loading ? <p>Searching...</p> : <ResultList results={results} />}</div>
       {error && <p role="alert" style={{ color: "red" }}> {error} </p>}
     </Stack>
