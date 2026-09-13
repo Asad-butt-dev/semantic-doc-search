@@ -9,6 +9,47 @@ A semantic search engine over PDF corpora, benchmarked across 3 embedding models
 
 ## Evaluation
 
+Retrieval quality was measured on a set of 100 labelled queries against the lecture-slide corpus, across 3 embedding models and 10 chunk sizes (200–650 words). Accuracy isn't a useful metric here — always predicting "not relevant" already scores 99.8% — so results are reported as **Recall@1**, **Recall@5**, and **MRR** (Mean Reciprocal Rank).
+
+### Model Comparison
+
+Mean over 10 chunk sizes, hybrid search off:
+
+| Model | Tokens | Recall@1 | Recall@5 | MRR |
+|-------|--------|----------|----------|-----|
+| all-MiniLM-L6-v2 (en) | 256 | 0.827 | 0.930 | 0.870 |
+| multilingual-e5-base | 512 | 0.805 | 0.916 | 0.851 |
+| paraphrase-multilingual-MiniLM-L12-v2 | 128 | 0.743 | 0.884 | 0.794 |
+
+![Model comparison](images/model_comparison.png)
+
+**Key findings:**
+
+The English-only model outperforms the multilingual MiniLM at every single chunk size (10/10, p ≈ 0.001 by sign test) despite having a smaller token window — language match beats model size. Against E5, the gap narrows to 7/10 chunk sizes (p ≈ 0.17), which isn't strong enough to call a clear winner. E5 also shows a decline beyond roughly 450 words per chunk, consistent with its 512-token limit being exceeded. Both MiniLM models stay essentially flat across all chunk sizes, since they truncate long chunks anyway — changing chunk size mostly just changes how many chunks exist, not what gets encoded. All three models nominally peak around 350 words per chunk.
+
+### Category Breakdown
+
+For all-MiniLM-L6-v2, mean over 10 chunk sizes:
+
+| Category | n | R@1 | R@5 | MRR |
+|----------|---|-----|-----|-----|
+| conceptual | 80 | 0.851 | 0.963 | 0.896 |
+| formula | 20 | 0.730 | 0.800 | 0.765 |
+| broad | 32 | 0.813 | 0.916 | 0.857 |
+| specific | 68 | 0.834 | 0.937 | 0.876 |
+
+![Category breakdown](images/category_comparison.png)
+
+### Why formula queries score lower
+
+All 4 permanent failures in the "formula" category target a single file, `lecture06.pdf`, which contributes **zero chunks** to the corpus — it's an image-based PDF with no text layer, so nothing could ever be extracted from it. The apparent conceptual/formula performance gap is therefore a document-level effect, not a weakness in matching formulas semantically. This also explains why Recall@5 is capped at 0.96 across every configuration tested: those 4 queries can never be answered correctly no matter which model or chunk size is used.
+
+### Eval Set
+
+100 queries over 20 PDFs, generated with an LLM using each PDF as context and then hand-reviewed. Each query is anchored to material unique to its target file. Fields per query: `query`, `file_name`, `content_type` (conceptual/formula), `specificity` (broad/specific).
+
+**Caveat:** LLM-generated queries may phrase things closer to the source wording than a real user would, which can inflate retrieval scores somewhat.
+
 
 
 
